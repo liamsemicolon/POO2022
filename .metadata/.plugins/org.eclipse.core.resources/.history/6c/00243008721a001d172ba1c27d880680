@@ -1,0 +1,13 @@
+import java.util.ArrayList;
+
+public class Salon {
+	private ArrayList<Superheroe> superheroes = new ArrayList<>();
+
+	public ArrayList<Superheroe> getSuperheroes() {
+		return superheroes;
+	}
+
+	public void setSuperheroes(ArrayList<Superheroe> superheroes) {
+		this.superheroes = superheroes;
+	}
+}

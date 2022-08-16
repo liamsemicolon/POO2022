@@ -1,0 +1,16 @@
+
+public class AsistenteConHabilidades extends Asistente{
+	private String nombreHabilidad;
+	
+	public float salarioFinal() {
+		return (float) (getSueldoBase() * 1.2);
+	}
+
+	public String getNombreHabilidad() {
+		return nombreHabilidad;
+	}
+
+	public void setNombreHabilidad(String nombreHabilidad) {
+		this.nombreHabilidad = nombreHabilidad;
+	}
+}

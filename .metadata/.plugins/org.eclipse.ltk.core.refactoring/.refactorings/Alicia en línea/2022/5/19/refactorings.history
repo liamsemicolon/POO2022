@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;private int cantidadDeLindos()&apos; from &apos;Mundo.masLindosQueNormales()&apos; to &apos;Mundo&apos;&#x0D;&#x0A;- Original project: &apos;Alicia en línea&apos;&#x0D;&#x0A;- Method name: &apos;cantidadDeLindos&apos;&#x0D;&#x0A;- Destination type: &apos;Mundo&apos;&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" comments="false" description="Extract method &apos;cantidadDeLindos&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src&lt;{Mundo.java" name="cantidadDeLindos" replace="false" selection="1362 24" stamp="1651865461025" version="1.0" visibility="2"/>
+</session>

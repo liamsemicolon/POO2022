@@ -1,0 +1,7 @@
+public class AsistenteCH extends Asistente{
+	
+	public float salarioFinal() {
+		return (float) (getSueldoBase() * 1.2);
+	}
+
+}

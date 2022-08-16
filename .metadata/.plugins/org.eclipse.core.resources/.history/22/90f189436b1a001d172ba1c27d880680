@@ -1,0 +1,6 @@
+public class Superheroe {
+	private String nombre;
+	private float presupuestoMensual;
+	
+	
+}

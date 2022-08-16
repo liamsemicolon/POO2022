@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+
+public class Salon {
+	private ArrayList<Superheroe> superheroes = new ArrayList<>();
+	
+	private int totalAsistentes() {
+		int total = 0;
+		for(Superheroe s : getSuperheroes()) {
+			total += s.cantidadDeAsistentes();
+		}
+		return total;
+	}
+	
+	private float promedioAsistentes() {
+		return float(totalAsistentes() / getSuperheroes.size())
+	}
+	
+	public ArrayList<Superheroe> getSuperheroes() {
+		return superheroes;
+	}
+
+	public void setSuperheroes(ArrayList<Superheroe> superheroes) {
+		this.superheroes = superheroes;
+	}
+}
