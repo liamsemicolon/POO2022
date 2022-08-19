@@ -5,6 +5,12 @@ public class Superheroe {
 	private float presupuestoMensual;
 	private ArrayList<Asistente> asistentes = new ArrayList<>();
 	
+	Superheroe(){};
+	
+	public void contratar (Asistente a) {
+		asistentes.add(a);
+	}
+	
 	public float totalAPagar() {
 		float f = 0;
 		for(Asistente a : getAsistentes()) {

@@ -2,6 +2,12 @@ public class Asistente {
 	private String nombre;
 	private float sueldoBase;
 	
+	Asistente(){};
+	
+	Asistente(float sueldo){
+		setSueldoBase(sueldo);
+	}
+	
 	public float salarioFinal() {
 		return getSueldoBase();
 	}
