@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="SuperheroeTest" project="Salon_de_la_Justicia" tests="3" started="3" failures="0" errors="0" ignored="0">
-  <testsuite name="SuperheroeTest" time="0.033" uniqueid="[engine:junit-jupiter]/[class:SuperheroeTest]">
-    <testcase name="soloTieneAsistentes" classname="SuperheroeTest" time="0.015" displayname="soloTieneAsistentes()" uniqueid="[engine:junit-jupiter]/[class:SuperheroeTest]/[method:soloTieneAsistentes()]"/>
-    <testcase name="soloTieneAsistentesCH" classname="SuperheroeTest" time="0.0" displayname="soloTieneAsistentesCH()" uniqueid="[engine:junit-jupiter]/[class:SuperheroeTest]/[method:soloTieneAsistentesCH()]"/>
-    <testcase name="hayAsistentesYAsistentesCH" classname="SuperheroeTest" time="0.018" displayname="hayAsistentesYAsistentesCH()" uniqueid="[engine:junit-jupiter]/[class:SuperheroeTest]/[method:hayAsistentesYAsistentesCH()]"/>
-  </testsuite>
-</testrun>
