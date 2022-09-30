@@ -7,14 +7,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
-import javax.swing.JPasswordField;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.ImageIcon;
+import javax.swing.JTable;
 
 public class Panel extends JPanel {
-	private JTextField textField;
-	private JPasswordField passwordField;
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JTable table;
 
 	/**
 	 * Create the panel.
@@ -22,49 +28,45 @@ public class Panel extends JPanel {
 	public Panel() {
 		setLayout(null);
 
+		Conexion c = new Conexion();
 		
-		JLabel instructivo = new JLabel("enviar pisa");
-		instructivo.setBounds(55, 151, 201, 14);
+		JLabel instructivo = new JLabel("enviar pizza");
+		instructivo.setBounds(84, 310, 79, 14);
 		add(instructivo);
 		
 		JTextField usuario = new JTextField();
-		usuario.setBounds(55, 47, 86, 20);
+		usuario.setBounds(20, 36, 208, 20);
 		add(usuario);
 		usuario.setColumns(10);
 		
-		JLabel txtUsuario = new JLabel("Usuario:");
-		txtUsuario.setBounds(55, 22, 117, 14);
+		JLabel txtUsuario = new JLabel("Tipo de pizza:");
+		txtUsuario.setBounds(20, 11, 226, 14);
 		add(txtUsuario);
 		
-		JLabel txtContra = new JLabel("Contraseña:");
-		txtContra.setBounds(55, 74, 86, 14);
+		JLabel txtContra = new JLabel("Calidades posibles:");
+		txtContra.setBounds(20, 67, 236, 14);
 		add(txtContra);
 		
-		DefaultListModel<String> elementos = new DefaultListModel<String>();
-		elementos.addElement("Horrible");
-		elementos.addElement("Malisima");
-		elementos.addElement("Mala");
-		elementos.addElement("No tan mala");
-		elementos.addElement("Normal");
-		elementos.addElement("No tan buena");
-		elementos.addElement("Buena");
-		elementos.addElement("Buenisima");
-		elementos.addElement("Envio de Dios");
-		JList<String> list = new JList<String>(elementos);
-		list.setLayoutOrientation(JList.VERTICAL);
-		list.setVisibleRowCount(-1);
-		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		list.setBounds(55, 137, 43, -17);
-		add(list);
+		table = c.pedirTabla();
+		
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setViewportBorder(null);
+		scrollPane.setBounds(20, 92, 236, 173);
+		add(scrollPane);
 		
 		JButton btnNewButton = new JButton("Enviar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				c.cargarABD(usuario.getText(), 1);
 			}
 		});
-		btnNewButton.setBounds(83, 172, 89, 23);
+		btnNewButton.setBounds(74, 325, 89, 23);
 		add(btnNewButton);
+		
+		JLabel image = new JLabel("mm rica pizza!");
+		image.setIcon(new ImageIcon("C:\\Users\\lruiz\\eclipse-workspace\\ejemplo.swing\\src\\ejemplo\\swing\\img\\pisa.png"));
+		image.setBounds(256, 67, 456, 257);
+		add(image);
 
 	}
 }
