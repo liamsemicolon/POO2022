@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ImageIcon;
@@ -29,6 +31,7 @@ public class Panel extends JPanel {
 		setLayout(null);
 
 		Conexion c = new Conexion();
+		int cP = 1;
 		
 		JLabel instructivo = new JLabel("enviar pizza");
 		instructivo.setBounds(84, 310, 79, 14);
@@ -54,17 +57,23 @@ public class Panel extends JPanel {
 		scrollPane.setBounds(20, 92, 236, 173);
 		add(scrollPane);
 		
+		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+	        public void valueChanged(ListSelectionEvent event) {
+	            System.out.println(table.getSelectedRow()+1);
+	        }
+	    });
+		
 		JButton btnNewButton = new JButton("Enviar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				c.cargarABD(usuario.getText(), 1);
+				c.cargarABD(usuario.getText(), (table.getSelectedRow()+1));
 			}
 		});
 		btnNewButton.setBounds(74, 325, 89, 23);
 		add(btnNewButton);
 		
 		JLabel image = new JLabel("mm rica pizza!");
-		image.setIcon(new ImageIcon("C:\\Users\\lruiz\\eclipse-workspace\\ejemplo.swing\\src\\ejemplo\\swing\\img\\pisa.png"));
+		image.setIcon(new ImageIcon("img\\pisa.png"));
 		image.setBounds(256, 67, 456, 257);
 		add(image);
 

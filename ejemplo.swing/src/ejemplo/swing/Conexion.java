@@ -2,30 +2,30 @@ package ejemplo.swing;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 public class Conexion {
+	private String url = "jdbc:mysql://localhost:3306/pizzeria_don_pepe";
+	private String usr = "root";
+	private String pass = "admin";
 	
 	public JTable pedirTabla() {
-		String url = "jdbc:mysql://localhost:3306/pizzeria_don_pepe";
-		String usr = "root";
-		String pass = "admin";
 		Connection c = null;
 		JTable tabla = new JTable();
 		 Object [] fila = new Object[2];
 		try {
 			c = DriverManager.getConnection(url, usr, pass);
-			Statement stmt =c.createStatement();
+			Statement stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from calidades_pizza");
 			DefaultTableModel modelo = new DefaultTableModel();
 			tabla = new JTable(modelo);
-			tabla.setEnabled(false);
-			tabla.setFillsViewportHeight(true);
 			modelo.addColumn("id");
 			modelo.addColumn("calidad");
 			while (rs.next()) {
@@ -44,18 +44,22 @@ public class Conexion {
 				}
 			}
 		}
+		tabla.setRowSelectionAllowed(true);
+		tabla.setRowSelectionInterval(0, 0);
+		tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tabla.setFillsViewportHeight(true);
+		tabla.setDefaultEditor(Object.class, null);
 		return tabla;
 	}
 	
 	public void cargarABD(String tP, int cP) {
-		String url = "jdbc:mysql://localhost:3306/pizzeria_don_pepe";
-		String usr = "root";
-		String pass = "admin";
 		Connection c = null;
 		try {
 			c = DriverManager.getConnection(url, usr, pass);
-			Statement stmt =c.createStatement();
-			int filasAfectadas = stmt.executeUpdate("insert into pizzas (tipo_pizza, id_calidad_pizza) VALUES ('" + tP + "', " + cP + ")");
+			PreparedStatement pstmt =c.prepareStatement("insert into pizzas(tipo_pizza, id_calidad_pizza) values (?,?)");
+			pstmt.setString(1, tP);
+			pstmt.setInt(2, cP);
+			int filasAfectadas = pstmt.executeUpdate();
 			if (filasAfectadas == 1) {
 				System.out.println("Se pudo");
 			}
