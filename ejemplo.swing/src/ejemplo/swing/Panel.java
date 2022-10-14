@@ -3,17 +3,22 @@ package ejemplo.swing;
 import javax.swing.JPanel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import java.awt.event.ActionListener;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
+import javax.swing.JTabbedPane;
 
 public class Panel extends JPanel {
 
@@ -23,6 +28,7 @@ public class Panel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTable table;
+	private JPanel marco;
 
 	/**
 	 * Create the panel.
@@ -31,7 +37,6 @@ public class Panel extends JPanel {
 		setLayout(null);
 
 		Conexion c = new Conexion();
-		int cP = 1;
 		
 		JLabel instructivo = new JLabel("enviar pizza");
 		instructivo.setBounds(84, 310, 79, 14);
@@ -50,7 +55,7 @@ public class Panel extends JPanel {
 		txtContra.setBounds(20, 67, 236, 14);
 		add(txtContra);
 		
-		table = c.pedirTabla();
+		table = c.pedirTabla("calidades_pizza");
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setViewportBorder(null);
@@ -59,14 +64,14 @@ public class Panel extends JPanel {
 		
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 	        public void valueChanged(ListSelectionEvent event) {
-	            System.out.println(table.getSelectedRow()+1);
+	        	System.out.println(table.getModel().getValueAt(table.getSelectedRow(), 0));
 	        }
 	    });
 		
 		JButton btnNewButton = new JButton("Enviar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				c.cargarABD(usuario.getText(), (table.getSelectedRow()+1));
+				c.cargarABD(usuario.getText(), Integer.valueOf(table.getModel().getValueAt(table.getSelectedRow(), 0).toString()));
 			}
 		});
 		btnNewButton.setBounds(74, 325, 89, 23);
@@ -76,6 +81,15 @@ public class Panel extends JPanel {
 		image.setIcon(new ImageIcon("img\\pisa.png"));
 		image.setBounds(256, 67, 456, 257);
 		add(image);
+		
+		JButton siguiente = new JButton("Gestor de Pizzas");
+		siguiente.setBounds(266, 325, 194, 23);
+		siguiente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame marco = (JFrame) SwingUtilities.getWindowAncestor((Component) e.getSource());
+			}
+		});
+		add(siguiente);
 
 	}
 }

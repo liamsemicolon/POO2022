@@ -26,4 +26,7 @@
     <fullyQualifiedTypeName name="javax.swing.event.ListSelectionListener"/>
     <fullyQualifiedTypeName name="javax.swing.event.ListSelectionEvent"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="javax.swing.SwingUtilities"/>
+    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="java.awt.Component"/>
 </qualifiedTypeNameHistroy>
