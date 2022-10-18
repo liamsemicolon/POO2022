@@ -1,4 +1,4 @@
-package ejemplo.swing;
+package vista;
 
 import javax.swing.JPanel;
 import javax.swing.DefaultListModel;
@@ -14,6 +14,10 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import dao.DAOGeneral;
+import modelo.Pizza;
+
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ImageIcon;
@@ -36,7 +40,7 @@ public class Panel extends JPanel {
 	public Panel() {
 		setLayout(null);
 
-		Conexion c = new Conexion();
+		DAOGeneral c = new DAOGeneral();
 		
 		JLabel instructivo = new JLabel("enviar pizza");
 		instructivo.setBounds(84, 310, 79, 14);
@@ -71,7 +75,8 @@ public class Panel extends JPanel {
 		JButton btnNewButton = new JButton("Enviar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				c.cargarABD(usuario.getText(), Integer.valueOf(table.getModel().getValueAt(table.getSelectedRow(), 0).toString()));
+				Pizza p = new Pizza(usuario.getText(), Integer.valueOf(table.getModel().getValueAt(table.getSelectedRow(), 0).toString()));
+				c.cargarABD(p.getNombre(), p.getCalidadPizza());
 			}
 		});
 		btnNewButton.setBounds(74, 325, 89, 23);

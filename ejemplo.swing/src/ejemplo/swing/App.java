@@ -1,6 +1,8 @@
 package ejemplo.swing;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+
+import vista.Panel;
 public class App {
 	public static void main(String[] args) {
 		JFrame polo = new JFrame("LA MÁQUINA DE HACER PIZZAS");
